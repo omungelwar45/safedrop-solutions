@@ -68,16 +68,16 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16 landing-atmosphere">
+    <div className="min-h-screen pt-14 sm:pt-16 landing-atmosphere">
       {/* Hero */}
-      <section className="section-padding relative overflow-hidden">
+      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-10 pb-8 sm:pb-10 lg:pb-12">
         <div className="container-tight relative">
-          <div className="clinic-hero-shell p-5 sm:p-8 lg:p-10">
+          <div className="clinic-hero-shell p-4 sm:p-5 lg:p-6">
             <div className="clinic-fade-panel" />
-            <div className="grid lg:grid-cols-[0.92fr_1.08fr] gap-8 items-center relative z-[1]">
+            <div className="grid lg:grid-cols-[0.92fr_1.08fr] gap-5 lg:gap-6 items-center relative z-[1]">
               <div>
                 <ScrollReveal>
-                  <div className="flex items-center gap-3 mb-5 text-white">
+                  <div className="flex items-center gap-3 mb-3 text-white">
                     <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center border border-white/35">
                       <Shield className="w-5 h-5" />
                     </div>
@@ -86,21 +86,21 @@ const Index = () => {
                 </ScrollReveal>
 
                 <ScrollReveal>
-                  <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#2b5f8d] text-white text-xs font-semibold tracking-[0.1em] mb-6 shadow-md">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2b5f8d] text-white text-xs font-semibold tracking-[0.1em] mb-4 shadow-md">
                     <span className="w-2 h-2 rounded-full bg-[#2f8cff]" />
                     NEW UPDATE
                   </div>
                 </ScrollReveal>
 
                 <ScrollReveal delay={0.08}>
-                  <h1 className="font-display text-white text-4xl sm:text-5xl lg:text-[3.65rem] leading-[1.03] tracking-tight mb-5 max-w-xl">
+                  <h1 className="font-display text-white text-3xl sm:text-4xl lg:text-[3.1rem] leading-[1.04] tracking-tight mb-4 max-w-xl">
                     Your Partner in
                     <span className="block text-[#dff0ff]">Medicine Safety and Wellness</span>
                   </h1>
                 </ScrollReveal>
 
                 <ScrollReveal delay={0.14}>
-                  <p className="text-white/80 text-sm sm:text-base max-w-xl mb-7 leading-relaxed">
+                  <p className="text-white/80 text-sm sm:text-[15px] max-w-xl mb-5 leading-relaxed">
                     MediSafe helps families and communities return unused antibiotics safely, preventing pollution and
                     slowing antimicrobial resistance through one smart platform.
                   </p>
@@ -110,14 +110,14 @@ const Index = () => {
                   <div className="flex flex-wrap items-center gap-3">
                     <Link
                       to="/map"
-                      className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-[#15518a] font-semibold text-sm hover:bg-white/90 transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-[#15518a] font-semibold text-sm hover:bg-white/90 transition-colors"
                     >
                       <MapPin className="w-4 h-4" />
                       Find Disposal Point
                     </Link>
                     <Link
                       to="/awareness"
-                      className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-white/35 bg-white/10 text-white font-semibold text-sm hover:bg-white/15 transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/35 bg-white/10 text-white font-semibold text-sm hover:bg-white/15 transition-colors"
                     >
                       See How It Works
                       <ArrowRight className="w-4 h-4" />
@@ -127,15 +127,15 @@ const Index = () => {
               </div>
 
               <ScrollReveal delay={0.2} direction="right">
-                <div className="relative min-h-[440px] sm:min-h-[500px] lg:min-h-[560px]">
+                <div className="relative min-h-[320px] sm:min-h-[380px] lg:min-h-[450px]">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.8 }}
-                    className="clinic-panel absolute left-0 right-20 top-16 p-5 sm:p-7"
+                    className="clinic-panel absolute left-0 right-16 top-10 p-4 sm:p-5"
                   >
-                    <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center justify-between mb-5">
                       <div className="flex items-center gap-2 text-[#245f93]">
                         <Shield className="w-4 h-4" />
                         <span className="text-sm font-semibold">MediSafe</span>
@@ -146,10 +146,10 @@ const Index = () => {
                       </div>
                     </div>
 
-                    <h3 className="font-display text-[#183f67] text-2xl sm:text-3xl font-bold max-w-md mb-4 leading-tight">
+                    <h3 className="font-display text-[#183f67] text-xl sm:text-2xl font-bold max-w-md mb-3 leading-tight">
                       Dispose Right. Keep Antibiotics Effective.
                     </h3>
-                    <p className="text-[#2f658f] text-sm max-w-md mb-6">
+                    <p className="text-[#2f658f] text-xs sm:text-sm max-w-md mb-4">
                       Build healthier neighborhoods by dropping expired antibiotics at safe centers and tracking your impact.
                     </p>
 
@@ -167,7 +167,7 @@ const Index = () => {
                       ))}
                     </div>
 
-                    <div className="mt-6 relative h-[185px] sm:h-[230px]">
+                    <div className="mt-4 relative h-[150px] sm:h-[190px]">
                       <div className="absolute left-0 bottom-3 rounded-2xl bg-white/85 border border-white/80 p-2.5 shadow-md">
                         <div className="flex items-center">
                           {avatarPhotos.map((photo, i) => (
@@ -227,7 +227,7 @@ const Index = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    className="clinic-mobile-card absolute right-0 top-2 w-[200px] sm:w-[228px] p-4"
+                    className="clinic-mobile-card absolute right-0 top-0 w-[184px] sm:w-[208px] p-3.5"
                   >
                     <div className="flex items-center justify-between text-[#245f93] mb-4">
                       <span className="text-xs font-semibold">MediSafe</span>
@@ -236,13 +236,13 @@ const Index = () => {
                         <Menu className="w-3.5 h-3.5" />
                       </div>
                     </div>
-                    <h4 className="font-display text-[#183f67] text-[1.6rem] leading-[1.05] mb-2">Your Community Safety Feed</h4>
+                    <h4 className="font-display text-[#183f67] text-[1.35rem] leading-[1.05] mb-2">Your Community Safety Feed</h4>
                     <p className="text-[12px] text-[#3b668d] mb-4">Live proof-based updates from disposal points near you.</p>
                     <div className="rounded-xl bg-white p-3 text-xs text-[#26537b]">
                       <p className="font-semibold">870+ collection partners</p>
                       <p className="text-[#4f7597] mt-1">150K+ safe returns recorded</p>
                     </div>
-                    <img src={heroImages.mobile} alt="Healthcare specialist" className="mt-4 rounded-xl w-full h-28 object-cover object-top" loading="lazy" />
+                    <img src={heroImages.mobile} alt="Healthcare specialist" className="mt-3 rounded-xl w-full h-24 object-cover object-top" loading="lazy" />
                   </motion.div>
 
                   <motion.div
@@ -250,7 +250,7 @@ const Index = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.7, delay: 0.32 }}
-                    className="absolute right-2 sm:right-6 bottom-8 glass-card p-3 sm:p-4 w-[210px] bg-white/80"
+                    className="absolute right-2 sm:right-4 bottom-4 glass-card p-3 sm:p-3.5 w-[190px] sm:w-[205px] bg-white/80"
                   >
                     <div className="flex items-center gap-3">
                       <img
@@ -270,7 +270,7 @@ const Index = () => {
                     </div>
                   </motion.div>
 
-                  <div className="absolute left-2 sm:-left-5 top-5 sm:top-8 rounded-2xl bg-white text-[#1f4f7b] px-4 py-2 shadow-lg text-sm font-semibold">
+                  <div className="absolute left-1 sm:-left-3 top-3 sm:top-5 rounded-2xl bg-white text-[#1f4f7b] px-3.5 py-1.5 shadow-lg text-xs sm:text-sm font-semibold">
                     <span className="inline-flex items-center gap-2">
                       <HeartPulse className="w-4 h-4 text-[#2f8cff]" />
                       No.1 Safe Disposal Network
