@@ -1,0 +1,38 @@
+{
+  "reminders": [
+    {
+      "id": "rx-end",
+      "title": "Post-prescription medicine check",
+      "time": "Every Sunday, 8:00 PM",
+      "channel": "push",
+      "enabled": true
+    },
+    {
+      "id": "seasonal",
+      "title": "Seasonal antibiotic awareness campaign",
+      "time": "1st day of month",
+      "channel": "email",
+      "enabled": true
+    },
+    {
+      "id": "household",
+      "title": "Household cabinet audit",
+      "time": "Every 2 weeks",
+      "channel": "sms",
+      "enabled": false
+    }
+  ],
+  "pickups": [
+    {
+      "id": "pk_1774185509617",
+      "fullName": "Demo User",
+      "phoneNumber": "9999999999",
+      "pickupAddress": "123 Main St",
+      "preferredDate": "2026-03-23",
+      "preferredTime": "10:30",
+      "medicineNotes": "sample",
+      "status": "requested",
+      "createdAt": "2026-03-22T13:18:29.617Z"
+    }
+  ]
+}

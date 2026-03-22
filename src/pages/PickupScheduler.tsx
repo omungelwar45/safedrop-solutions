@@ -1,13 +1,30 @@
 import { FormEvent, useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Truck, CheckCircle2 } from "lucide-react";
+import { createPickupApi } from "@/lib/api";
 
 const PickupScheduler = () => {
   const [submitted, setSubmitted] = useState(false);
 
-  const submitPickup = (event: FormEvent<HTMLFormElement>) => {
+  const submitPickup = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    const formData = new FormData(event.currentTarget);
+
+    try {
+      await createPickupApi({
+        fullName: String(formData.get("fullName") || ""),
+        phoneNumber: String(formData.get("phoneNumber") || ""),
+        pickupAddress: String(formData.get("pickupAddress") || ""),
+        preferredDate: String(formData.get("preferredDate") || ""),
+        preferredTime: String(formData.get("preferredTime") || ""),
+        medicineNotes: String(formData.get("medicineNotes") || ""),
+      });
+
+      setSubmitted(true);
+      event.currentTarget.reset();
+    } catch {
+      setSubmitted(false);
+    }
   };
 
   return (
@@ -31,14 +48,14 @@ const PickupScheduler = () => {
                 </div>
               ) : (
                 <form className="space-y-3" onSubmit={submitPickup}>
-                  <input required placeholder="Full Name" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm" />
-                  <input required placeholder="Phone Number" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm" />
-                  <input required placeholder="Pickup Address" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm" />
+                  <input name="fullName" required placeholder="Full Name" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm" />
+                  <input name="phoneNumber" required placeholder="Phone Number" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm" />
+                  <input name="pickupAddress" required placeholder="Pickup Address" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm" />
                   <div className="grid sm:grid-cols-2 gap-3">
-                    <input required type="date" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm" />
-                    <input required type="time" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm" />
+                    <input name="preferredDate" required type="date" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm" />
+                    <input name="preferredTime" required type="time" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm" />
                   </div>
-                  <textarea placeholder="Medicine notes (optional)" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm min-h-24" />
+                  <textarea name="medicineNotes" placeholder="Medicine notes (optional)" className="w-full px-3 py-2.5 rounded-xl bg-secondary border border-border/50 text-sm min-h-24" />
 
                   <button type="submit" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm">
                     <Truck className="w-4 h-4" />

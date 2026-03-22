@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { loginApi } from "@/lib/api";
 
 type AuthUser = {
   email: string;
@@ -57,10 +58,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       throw new Error("Password must be at least 6 characters.");
     }
 
-    const name = normalizedEmail.split("@")[0] || "MediSafe User";
+    const response = await loginApi(normalizedEmail, normalizedPassword);
     const nextUser: AuthUser = {
-      email: normalizedEmail,
-      name: name.replace(/\./g, " "),
+      email: response.user.email,
+      name: response.user.name,
     };
 
     localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(nextUser));

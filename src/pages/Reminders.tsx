@@ -1,13 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { reminders } from "@/lib/impact";
+import { listRemindersApi, updateReminderApi, type ReminderItem } from "@/lib/api";
 import { BellRing, CalendarClock } from "lucide-react";
 
 const Reminders = () => {
-  const [items, setItems] = useState(reminders);
+  const [items, setItems] = useState<ReminderItem[]>([]);
 
-  const toggleReminder = (id: string) => {
-    setItems((current) => current.map((item) => (item.id === id ? { ...item, enabled: !item.enabled } : item)));
+  useEffect(() => {
+    const loadReminders = async () => {
+      try {
+        const response = await listRemindersApi();
+        setItems(response.reminders);
+      } catch {
+        setItems([]);
+      }
+    };
+
+    void loadReminders();
+  }, []);
+
+  const toggleReminder = async (id: string) => {
+    const target = items.find((item) => item.id === id);
+    if (!target) {
+      return;
+    }
+
+    const nextEnabled = !target.enabled;
+    setItems((current) => current.map((item) => (item.id === id ? { ...item, enabled: nextEnabled } : item)));
+
+    try {
+      const response = await updateReminderApi(id, nextEnabled);
+      setItems((current) => current.map((item) => (item.id === id ? response.reminder : item)));
+    } catch {
+      setItems((current) => current.map((item) => (item.id === id ? { ...item, enabled: target.enabled } : item)));
+    }
   };
 
   return (
@@ -31,7 +57,9 @@ const Reminders = () => {
                     </div>
                   </div>
                   <button
-                    onClick={() => toggleReminder(item.id)}
+                    onClick={() => {
+                      void toggleReminder(item.id);
+                    }}
                     className={`text-xs px-3 py-1.5 rounded-lg font-medium ${item.enabled ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"}`}
                   >
                     {item.enabled ? "Enabled" : "Enable"}
