@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -99,6 +99,98 @@
 }
 
 @layer components {
+  .clinic-hero-shell {
+    border-radius: 2rem;
+    background:
+      radial-gradient(circle at 18% 8%, rgb(208 231 255 / 35%), transparent 40%),
+      radial-gradient(circle at 82% 18%, rgb(221 240 255 / 34%), transparent 38%),
+      linear-gradient(125deg, #5ca3dd 0%, #4a8fcf 37%, #3b7dbe 100%);
+    box-shadow: 0 35px 65px rgb(32 80 129 / 28%);
+    border: 1px solid rgb(255 255 255 / 32%);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .clinic-fade-panel {
+    position: absolute;
+    top: 2rem;
+    right: 1.2rem;
+    bottom: 2rem;
+    width: min(34%, 300px);
+    border-radius: 1.6rem;
+    background: linear-gradient(180deg, rgb(225 240 252 / 42%), rgb(217 234 248 / 18%));
+    border: 1px solid rgb(255 255 255 / 28%);
+    backdrop-filter: blur(2px);
+  }
+
+  .clinic-hero-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(100deg, rgb(255 255 255 / 16%) 0%, transparent 24%),
+      linear-gradient(215deg, rgb(255 255 255 / 10%) 0%, transparent 36%);
+  }
+
+  .clinic-panel {
+    border-radius: 1.5rem;
+    background: linear-gradient(160deg, rgb(235 246 255 / 95%), rgb(196 224 248 / 92%));
+    border: 1px solid rgb(255 255 255 / 78%);
+    box-shadow: 0 18px 45px rgb(29 74 120 / 26%);
+  }
+
+  .clinic-mobile-card {
+    border-radius: 1.25rem;
+    background: linear-gradient(175deg, rgb(226 240 253 / 95%), rgb(186 216 241 / 92%));
+    border: 1px solid rgb(255 255 255 / 72%);
+    box-shadow: 0 18px 34px rgb(28 70 112 / 22%);
+    backdrop-filter: blur(7px);
+  }
+
+  .clinic-photo-cutout {
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 3px solid rgb(255 255 255 / 75%);
+    box-shadow: 0 14px 30px rgb(21 58 98 / 30%);
+  }
+
+  @media (max-width: 1023px) {
+    .clinic-fade-panel {
+      display: none;
+    }
+  }
+
+  .landing-atmosphere {
+    background:
+      radial-gradient(circle at 12% 20%, hsl(var(--primary) / 0.14), transparent 34%),
+      radial-gradient(circle at 88% 10%, hsl(var(--accent) / 0.5), transparent 36%),
+      radial-gradient(circle at 55% 120%, hsl(var(--primary) / 0.08), transparent 34%),
+      hsl(var(--background));
+  }
+
+  .hero-grid-pattern {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.35) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(circle at center, black 46%, transparent 92%);
+  }
+
+  .hero-highlight {
+    color: hsl(var(--foreground));
+    background-image: linear-gradient(100deg, hsl(var(--primary)), hsl(190 70% 48%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .aurora-band {
+    background: linear-gradient(120deg, transparent 12%, hsl(var(--primary) / 0.12) 46%, transparent 78%);
+    transform: translateX(-24%);
+    animation: aurora-slide 8s ease-in-out infinite alternate;
+  }
+
   .glass-card {
     @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-2xl;
   }
@@ -144,11 +236,34 @@
 }
 
 @layer utilities {
+  .animate-float-y {
+    animation: float-y 6s ease-in-out infinite;
+  }
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes aurora-slide {
+  0% {
+    transform: translateX(-24%);
+  }
+  100% {
+    transform: translateX(22%);
   }
 }

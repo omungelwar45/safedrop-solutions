@@ -1,20 +1,33 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "./ThemeProvider";
-import { Moon, Sun, Menu, X, Shield } from "lucide-react";
+import { LogOut, Moon, Sun, Menu, X, Shield } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "./AuthProvider";
 
 const navItems = [
   { path: "/", label: "Home" },
   { path: "/map", label: "Find Disposal" },
+  { path: "/game", label: "Game" },
   { path: "/dashboard", label: "Dashboard" },
+  { path: "/missions", label: "Missions" },
+  { path: "/partner", label: "Partner" },
+  { path: "/marketplace", label: "Rewards" },
   { path: "/awareness", label: "Learn" },
 ];
 
 export const Navbar = () => {
   const { theme, toggle } = useTheme();
+  const { isAuthenticated, logout } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    setMobileOpen(false);
+    navigate("/");
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-card rounded-none border-x-0 border-t-0">
@@ -33,7 +46,7 @@ export const Navbar = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
                 location.pathname === item.path
                   ? "bg-primary/10 text-primary"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
@@ -42,6 +55,23 @@ export const Navbar = () => {
               {item.label}
             </Link>
           ))}
+
+          {isAuthenticated ? (
+            <button
+              onClick={handleLogout}
+              className="ml-2 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+            >
+              <LogOut className="w-4 h-4" />
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="ml-2 px-4 py-2 rounded-lg text-sm font-medium bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
+            >
+              Login
+            </Link>
+          )}
         </div>
 
         <div className="flex items-center gap-2">
@@ -85,6 +115,24 @@ export const Navbar = () => {
                   {item.label}
                 </Link>
               ))}
+
+              {isAuthenticated ? (
+                <button
+                  onClick={handleLogout}
+                  className="w-full text-left flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-4 py-2.5 rounded-lg text-sm font-medium bg-primary text-primary-foreground"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </motion.div>
         )}
