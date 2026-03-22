@@ -22,14 +22,14 @@ import { motion } from "framer-motion";
 
 const Index = () => {
   const heroImages = {
-    team: "https://images.unsplash.com/photo-1612277795421-9bc7706a4a41?auto=format&fit=crop&w=1200&q=80",
+    team: "https://images.pexels.com/photos/8460099/pexels-photo-8460099.jpeg?auto=compress&cs=tinysrgb&w=1200",
     portrait: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=700&q=80",
     mobile: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80",
   };
 
   const avatarPhotos = [
     "https://images.unsplash.com/photo-1614436163996-25cee5f54290?auto=format&fit=crop&w=120&q=80",
-    "https://images.unsplash.com/photo-1594824475544-3fa0f38d5fc7?auto=format&fit=crop&w=120&q=80",
+    "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=300",
     "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=120&q=80",
   ];
 
@@ -177,6 +177,10 @@ const Index = () => {
                               alt="Medical professional"
                               className={`w-8 h-8 rounded-full object-cover border-2 border-white ${i > 0 ? "-ml-3" : ""}`}
                               loading="lazy"
+                              onError={(e) => {
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.src = "/placeholder.svg";
+                              }}
                             />
                           ))}
                         </div>
@@ -189,6 +193,10 @@ const Index = () => {
                           alt="Doctors team"
                           className="w-full h-full object-cover object-center"
                           loading="lazy"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = "/placeholder.svg";
+                          }}
                         />
                       </div>
 
@@ -201,6 +209,10 @@ const Index = () => {
                               alt="Top doctor"
                               className={`w-6 h-6 rounded-full object-cover border-2 border-white ${i > 0 ? "-ml-2" : ""}`}
                               loading="lazy"
+                              onError={(e) => {
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.src = "/placeholder.svg";
+                              }}
                             />
                           ))}
                         </div>
@@ -246,6 +258,10 @@ const Index = () => {
                         alt="Medical advisor"
                         className="w-10 h-10 rounded-full object-cover border-2 border-white"
                         loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = "/placeholder.svg";
+                        }}
                       />
                       <div>
                         <p className="text-sm font-semibold text-[#1b4972]">150K+ Patient Recovery</p>
