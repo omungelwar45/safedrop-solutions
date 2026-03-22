@@ -70,11 +70,11 @@ const Index = () => {
   return (
     <div className="min-h-screen pt-14 sm:pt-16 landing-atmosphere">
       {/* Hero */}
-      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-10 pb-8 sm:pb-10 lg:pb-12">
+      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-5 sm:pt-6 lg:pt-8 pb-6 sm:pb-8 lg:pb-10 min-h-[calc(100svh-3.5rem)] lg:min-h-[calc(100svh-4rem)] flex items-center">
         <div className="container-tight relative">
           <div className="clinic-hero-shell p-4 sm:p-5 lg:p-6">
             <div className="clinic-fade-panel" />
-            <div className="grid lg:grid-cols-[0.92fr_1.08fr] gap-5 lg:gap-6 items-center relative z-[1]">
+            <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-4 lg:gap-5 items-center relative z-[1]">
               <div>
                 <ScrollReveal>
                   <div className="flex items-center gap-3 mb-3 text-white">
@@ -93,14 +93,14 @@ const Index = () => {
                 </ScrollReveal>
 
                 <ScrollReveal delay={0.08}>
-                  <h1 className="font-display text-white text-3xl sm:text-4xl lg:text-[3.1rem] leading-[1.04] tracking-tight mb-4 max-w-xl">
+                  <h1 className="font-display text-white text-[2.5rem] sm:text-4xl lg:text-[2.95rem] leading-[1.04] tracking-tight mb-4 max-w-xl">
                     Your Partner in
                     <span className="block text-[#dff0ff]">Medicine Safety and Wellness</span>
                   </h1>
                 </ScrollReveal>
 
                 <ScrollReveal delay={0.14}>
-                  <p className="text-white/80 text-sm sm:text-[15px] max-w-xl mb-5 leading-relaxed">
+                  <p className="text-white/80 text-sm sm:text-[15px] max-w-lg mb-5 leading-relaxed">
                     MediSafe helps families and communities return unused antibiotics safely, preventing pollution and
                     slowing antimicrobial resistance through one smart platform.
                   </p>
@@ -127,13 +127,13 @@ const Index = () => {
               </div>
 
               <ScrollReveal delay={0.2} direction="right">
-                <div className="relative min-h-[320px] sm:min-h-[380px] lg:min-h-[450px]">
+                <div className="relative min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] xl:min-h-[430px] lg:pr-2">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.8 }}
-                    className="clinic-panel absolute left-0 right-16 top-10 p-4 sm:p-5"
+                    className="clinic-panel absolute left-0 right-14 top-8 p-4 sm:p-5"
                   >
                     <div className="flex items-center justify-between mb-5">
                       <div className="flex items-center gap-2 text-[#245f93]">
@@ -146,28 +146,28 @@ const Index = () => {
                       </div>
                     </div>
 
-                    <h3 className="font-display text-[#183f67] text-xl sm:text-2xl font-bold max-w-md mb-3 leading-tight">
+                    <h3 className="font-display text-[#183f67] text-lg sm:text-[1.6rem] font-bold max-w-md mb-2.5 leading-tight">
                       Dispose Right. Keep Antibiotics Effective.
                     </h3>
-                    <p className="text-[#2f658f] text-xs sm:text-sm max-w-md mb-4">
+                    <p className="text-[#2f658f] text-xs sm:text-[13px] max-w-md mb-3.5">
                       Build healthier neighborhoods by dropping expired antibiotics at safe centers and tracking your impact.
                     </p>
 
-                    <div className="grid grid-cols-3 gap-3 bg-white/70 rounded-2xl p-3 border border-white/70">
+                    <div className="grid grid-cols-3 gap-2.5 bg-white/70 rounded-2xl p-2.5 border border-white/70">
                       {[
                         { icon: Calendar, label: "Date", value: "March 2026" },
                         { icon: Stethoscope, label: "Focus", value: "AMR Safety" },
                         { icon: MapPin, label: "Region", value: "Your City" },
                       ].map((item) => (
-                        <div key={item.label} className="rounded-xl bg-white p-2.5">
-                          <item.icon className="w-4 h-4 text-[#2f8cff] mb-1.5" />
+                        <div key={item.label} className="rounded-xl bg-white p-2">
+                          <item.icon className="w-3.5 h-3.5 text-[#2f8cff] mb-1" />
                           <p className="text-[11px] text-[#4c7498]">{item.label}</p>
                           <p className="text-[11px] font-semibold text-[#1f4c77]">{item.value}</p>
                         </div>
                       ))}
                     </div>
 
-                    <div className="mt-4 relative h-[150px] sm:h-[190px]">
+                    <div className="mt-3 relative h-[130px] sm:h-[170px]">
                       <div className="absolute left-0 bottom-3 rounded-2xl bg-white/85 border border-white/80 p-2.5 shadow-md">
                         <div className="flex items-center">
                           {avatarPhotos.map((photo, i) => (
@@ -227,7 +227,7 @@ const Index = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    className="clinic-mobile-card absolute right-0 top-0 w-[184px] sm:w-[208px] p-3.5"
+                    className="clinic-mobile-card absolute right-0 top-0 w-[176px] sm:w-[198px] p-3"
                   >
                     <div className="flex items-center justify-between text-[#245f93] mb-4">
                       <span className="text-xs font-semibold">MediSafe</span>
@@ -236,13 +236,13 @@ const Index = () => {
                         <Menu className="w-3.5 h-3.5" />
                       </div>
                     </div>
-                    <h4 className="font-display text-[#183f67] text-[1.35rem] leading-[1.05] mb-2">Your Community Safety Feed</h4>
-                    <p className="text-[12px] text-[#3b668d] mb-4">Live proof-based updates from disposal points near you.</p>
+                    <h4 className="font-display text-[#183f67] text-[1.2rem] sm:text-[1.3rem] leading-[1.05] mb-1.5">Your Community Safety Feed</h4>
+                    <p className="text-[11px] sm:text-[12px] text-[#3b668d] mb-3">Live proof-based updates from disposal points near you.</p>
                     <div className="rounded-xl bg-white p-3 text-xs text-[#26537b]">
                       <p className="font-semibold">870+ collection partners</p>
                       <p className="text-[#4f7597] mt-1">150K+ safe returns recorded</p>
                     </div>
-                    <img src={heroImages.mobile} alt="Healthcare specialist" className="mt-3 rounded-xl w-full h-24 object-cover object-top" loading="lazy" />
+                    <img src={heroImages.mobile} alt="Healthcare specialist" className="mt-2.5 rounded-xl w-full h-20 sm:h-24 object-cover object-top" loading="lazy" />
                   </motion.div>
 
                   <motion.div
@@ -250,7 +250,7 @@ const Index = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.7, delay: 0.32 }}
-                    className="absolute right-2 sm:right-4 bottom-4 glass-card p-3 sm:p-3.5 w-[190px] sm:w-[205px] bg-white/80"
+                    className="absolute right-2 sm:right-4 bottom-3 glass-card p-2.5 sm:p-3 w-[176px] sm:w-[190px] bg-white/80"
                   >
                     <div className="flex items-center gap-3">
                       <img
@@ -264,13 +264,13 @@ const Index = () => {
                         }}
                       />
                       <div>
-                        <p className="text-sm font-semibold text-[#1b4972]">150K+ Patient Recovery</p>
-                        <p className="text-xs text-[#53799c]">Top Rated Medical Partner</p>
+                        <p className="text-xs sm:text-sm font-semibold text-[#1b4972]">150K+ Patient Recovery</p>
+                        <p className="text-[11px] sm:text-xs text-[#53799c]">Top Rated Medical Partner</p>
                       </div>
                     </div>
                   </motion.div>
 
-                  <div className="absolute left-1 sm:-left-3 top-3 sm:top-5 rounded-2xl bg-white text-[#1f4f7b] px-3.5 py-1.5 shadow-lg text-xs sm:text-sm font-semibold">
+                  <div className="absolute left-1 sm:-left-2 top-2 sm:top-4 rounded-2xl bg-white text-[#1f4f7b] px-3 py-1.5 shadow-lg text-xs sm:text-sm font-semibold">
                     <span className="inline-flex items-center gap-2">
                       <HeartPulse className="w-4 h-4 text-[#2f8cff]" />
                       No.1 Safe Disposal Network
