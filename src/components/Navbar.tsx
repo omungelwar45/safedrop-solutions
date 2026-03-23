@@ -13,6 +13,7 @@ const navItems = [
   { path: "/missions", label: "Missions" },
   { path: "/partner", label: "Partner" },
   { path: "/marketplace", label: "Rewards" },
+  { path: "/innovation", label: "Innovation" },
   { path: "/awareness", label: "Learn" },
 ];
 

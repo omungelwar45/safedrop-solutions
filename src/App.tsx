@@ -19,6 +19,7 @@ import Reminders from "./pages/Reminders.tsx";
 import PickupScheduler from "./pages/PickupScheduler.tsx";
 import Compliance from "./pages/Compliance.tsx";
 import Marketplace from "./pages/Marketplace.tsx";
+import Innovation from "./pages/Innovation.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -47,6 +48,7 @@ const App = () => (
                 <Route path="/pickup" element={<PickupScheduler />} />
                 <Route path="/compliance" element={<Compliance />} />
                 <Route path="/marketplace" element={<Marketplace />} />
+                <Route path="/innovation" element={<Innovation />} />
               </Route>
 
               <Route path="*" element={<NotFound />} />

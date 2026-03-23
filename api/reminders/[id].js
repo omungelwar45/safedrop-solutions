@@ -25,7 +25,7 @@ export default function handler(req, res) {
       reminder.enabled = req.body.enabled;
     }
 
-    return res.json(reminder);
+    return res.json({ reminder });
   }
 
   res.status(405).json({ error: "Method not allowed" });

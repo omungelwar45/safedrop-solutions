@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { listRemindersApi, updateReminderApi, type ReminderItem } from "@/lib/api";
+import { listSyncedReminders, updateSyncedReminder } from "@/lib/hackathonFeatures";
 import { BellRing, CalendarClock } from "lucide-react";
 
 const Reminders = () => {
@@ -8,11 +9,12 @@ const Reminders = () => {
 
   useEffect(() => {
     const loadReminders = async () => {
+      const synced = listSyncedReminders();
       try {
         const response = await listRemindersApi();
-        setItems(response.reminders);
+        setItems([...synced, ...response.reminders]);
       } catch {
-        setItems([]);
+        setItems(synced);
       }
     };
 
@@ -27,6 +29,14 @@ const Reminders = () => {
 
     const nextEnabled = !target.enabled;
     setItems((current) => current.map((item) => (item.id === id ? { ...item, enabled: nextEnabled } : item)));
+
+    if (id.startsWith("sync-")) {
+      const updated = updateSyncedReminder(id, nextEnabled);
+      if (!updated) {
+        setItems((current) => current.map((item) => (item.id === id ? { ...item, enabled: target.enabled } : item)));
+      }
+      return;
+    }
 
     try {
       const response = await updateReminderApi(id, nextEnabled);
