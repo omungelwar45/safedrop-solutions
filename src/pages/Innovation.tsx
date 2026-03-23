@@ -174,12 +174,12 @@ const Innovation = () => {
                 <p className="text-sm text-muted-foreground mb-4">Monthly disposal trend from verified scans and pickups.</p>
 
                 <div className="rounded-2xl bg-secondary/70 p-4">
-                  <div className="h-44 flex items-end gap-2">
+                  <div className="h-44 flex items-end gap-2 border-b border-border/50 pb-2">
                     {series.map((point) => {
-                      const height = Math.max(8, Math.round((point.value / maxBar) * 100));
+                      const height = Math.max(10, Math.round((point.value / maxBar) * 120));
                       return (
                         <div key={point.key} className="flex-1 flex flex-col items-center gap-2">
-                          <div className="w-full rounded-t-lg bg-gradient-to-t from-primary to-accent" style={{ height: `${height}%` }} />
+                          <div className="w-full rounded-t-lg bg-gradient-to-t from-primary to-accent transition-all" style={{ height: `${height}px` }} />
                           <p className="text-[11px] text-muted-foreground">{point.label}</p>
                         </div>
                       );
