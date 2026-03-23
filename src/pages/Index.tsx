@@ -1,88 +1,30 @@
 import { Link } from "react-router-dom";
 import { ScrollReveal } from "../components/ScrollReveal";
-import {
-  Activity,
-  ArrowRight,
-  Award,
-  Calendar,
-  Beaker,
-  BellRing,
-  HeartPulse,
-  MapPin,
-  Menu,
-  Pill,
-  Recycle,
-  Search,
-  Shield,
-  Stethoscope,
-  Target,
-  Users,
-} from "lucide-react";
+import { MapPin, Shield, Award, ArrowRight, Pill, AlertTriangle, Recycle, Users, HeartPulse } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Index = () => {
-  const heroImages = {
-    team: "https://images.pexels.com/photos/8460099/pexels-photo-8460099.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    portrait: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=700&q=80",
-    mobile: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80",
-  };
-
   const avatarPhotos = [
     "https://images.unsplash.com/photo-1614436163996-25cee5f54290?auto=format&fit=crop&w=120&q=80",
     "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=300",
     "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=120&q=80",
   ];
 
-  const quickStats = [
-    { label: "Unused antibiotic doses", value: "73B+", icon: Pill },
-    { label: "Drug-resistant deaths each year", value: "1.27M", icon: Activity },
-    { label: "Verified disposal points", value: "2,400+", icon: MapPin },
-    { label: "Citizens in the movement", value: "18K+", icon: Users },
-  ];
-
-  const impactSteps = [
-    {
-      id: "01",
-      title: "Locate a safe drop point",
-      desc: "Open the disposal map and choose the closest verified collection center near you.",
-      icon: MapPin,
-    },
-    {
-      id: "02",
-      title: "Drop expired antibiotics",
-      desc: "Seal unused medicine and dispose through approved channels instead of sinks or trash bins.",
-      icon: Recycle,
-    },
-    {
-      id: "03",
-      title: "Verify and earn impact points",
-      desc: "Upload a quick proof image and receive points, streaks, and community badges.",
-      icon: Award,
-    },
-    {
-      id: "04",
-      title: "Cut superbug exposure",
-      desc: "Every safe disposal lowers environmental antibiotic pressure and slows resistance growth.",
-      icon: Shield,
-    },
-  ];
+  const heroImages = {
+    team: "https://images.pexels.com/photos/8460099/pexels-photo-8460099.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  };
 
   return (
-    <div className="min-h-screen pt-14 sm:pt-16 landing-atmosphere">
+    <div className="min-h-screen pt-16 landing-atmosphere">
       {/* Hero */}
-      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-5 sm:pt-6 lg:pt-8 pb-6 sm:pb-8 lg:pb-10 min-h-[calc(100svh-3.5rem)] lg:min-h-[calc(100svh-4rem)] flex items-center">
+      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-5 sm:pt-6 lg:pt-8 pb-6 sm:pb-8 lg:pb-10 min-h-[calc(100svh-4rem)] lg:min-h-[calc(100svh-4rem)] flex items-center">
         <div className="container-tight relative">
           <div className="clinic-hero-shell p-4 sm:p-5 lg:p-6">
             <div className="clinic-fade-panel" />
             <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-4 lg:gap-5 items-center relative z-[1]">
               <div>
                 <ScrollReveal>
-                  <div className="flex items-center gap-3 mb-3 text-white">
-                    <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center border border-white/35">
-                      <Shield className="w-5 h-5" />
-                    </div>
-                    <p className="font-display text-4xl leading-none tracking-tight">ProHealth</p>
-                  </div>
+                  <p className="font-display text-white text-3xl sm:text-4xl leading-none tracking-tight mb-3">MediSafe</p>
                 </ScrollReveal>
 
                 <ScrollReveal>
@@ -94,15 +36,13 @@ const Index = () => {
 
                 <ScrollReveal delay={0.08}>
                   <h1 className="font-display text-white text-[2.5rem] sm:text-4xl lg:text-[2.95rem] leading-[1.04] tracking-tight mb-4 max-w-xl">
-                    Your Partner in
-                    <span className="block text-[#dff0ff]">Medicine Safety and Wellness</span>
+                    Your Partner in<span className="block text-[#dff0ff]">Medicine Safety and Wellness</span>
                   </h1>
                 </ScrollReveal>
 
                 <ScrollReveal delay={0.14}>
                   <p className="text-white/80 text-sm sm:text-[15px] max-w-lg mb-5 leading-relaxed">
-                    MediSafe helps families and communities return unused antibiotics safely, preventing pollution and
-                    slowing antimicrobial resistance through one smart platform.
+                    MediSafe helps families and communities return unused antibiotics safely, preventing pollution and slowing antimicrobial resistance through one smart platform.
                   </p>
                 </ScrollReveal>
 
@@ -141,8 +81,7 @@ const Index = () => {
                         <span className="text-sm font-semibold">MediSafe</span>
                       </div>
                       <div className="flex items-center gap-2 text-[#245f93]">
-                        <Search className="w-4 h-4" />
-                        <Menu className="w-4 h-4" />
+                        <MapPin className="w-3.5 h-3.5" />
                       </div>
                     </div>
 
@@ -155,12 +94,11 @@ const Index = () => {
 
                     <div className="grid grid-cols-3 gap-2.5 bg-white/70 rounded-2xl p-2.5 border border-white/70">
                       {[
-                        { icon: Calendar, label: "Date", value: "March 2026" },
-                        { icon: Stethoscope, label: "Focus", value: "AMR Safety" },
-                        { icon: MapPin, label: "Region", value: "Your City" },
+                        { label: "Date", value: "March 2026" },
+                        { label: "Focus", value: "AMR Safety" },
+                        { label: "Region", value: "Your City" },
                       ].map((item) => (
                         <div key={item.label} className="rounded-xl bg-white p-2">
-                          <item.icon className="w-3.5 h-3.5 text-[#2f8cff] mb-1" />
                           <p className="text-[11px] text-[#4c7498]">{item.label}</p>
                           <p className="text-[11px] font-semibold text-[#1f4c77]">{item.value}</p>
                         </div>
@@ -199,26 +137,6 @@ const Index = () => {
                           }}
                         />
                       </div>
-
-                      <div className="absolute right-1 top-0 rounded-2xl bg-white/86 border border-white/80 px-3 py-2 text-center">
-                        <div className="flex items-center justify-center mb-1">
-                          {avatarPhotos.map((photo, i) => (
-                            <img
-                              key={`hero-${photo}`}
-                              src={photo}
-                              alt="Top doctor"
-                              className={`w-6 h-6 rounded-full object-cover border-2 border-white ${i > 0 ? "-ml-2" : ""}`}
-                              loading="lazy"
-                              onError={(e) => {
-                                e.currentTarget.onerror = null;
-                                e.currentTarget.src = "/placeholder.svg";
-                              }}
-                            />
-                          ))}
-                        </div>
-                        <p className="text-xs font-semibold text-[#2b5f8d] leading-none">870+</p>
-                        <p className="text-[10px] text-[#5a7f9f]">Doctors</p>
-                      </div>
                     </div>
                   </motion.div>
 
@@ -231,10 +149,7 @@ const Index = () => {
                   >
                     <div className="flex items-center justify-between text-[#245f93] mb-4">
                       <span className="text-xs font-semibold">MediSafe</span>
-                      <div className="flex items-center gap-1.5">
-                        <Search className="w-3.5 h-3.5" />
-                        <Menu className="w-3.5 h-3.5" />
-                      </div>
+                      <MapPin className="w-3.5 h-3.5" />
                     </div>
                     <h4 className="font-display text-[#183f67] text-[1.2rem] sm:text-[1.3rem] leading-[1.05] mb-1.5">Your Community Safety Feed</h4>
                     <p className="text-[11px] sm:text-[12px] text-[#3b668d] mb-3">Live proof-based updates from disposal points near you.</p>
@@ -242,7 +157,6 @@ const Index = () => {
                       <p className="font-semibold">870+ collection partners</p>
                       <p className="text-[#4f7597] mt-1">150K+ safe returns recorded</p>
                     </div>
-                    <img src={heroImages.mobile} alt="Healthcare specialist" className="mt-2.5 rounded-xl w-full h-20 sm:h-24 object-cover object-top" loading="lazy" />
                   </motion.div>
 
                   <motion.div
@@ -254,7 +168,7 @@ const Index = () => {
                   >
                     <div className="flex items-center gap-3">
                       <img
-                        src={heroImages.portrait}
+                        src={avatarPhotos[0]}
                         alt="Medical advisor"
                         className="w-10 h-10 rounded-full object-cover border-2 border-white"
                         loading="lazy"
@@ -272,7 +186,7 @@ const Index = () => {
 
                   <div className="absolute left-1 sm:-left-2 top-2 sm:top-4 rounded-2xl bg-white text-[#1f4f7b] px-3 py-1.5 shadow-lg text-xs sm:text-sm font-semibold">
                     <span className="inline-flex items-center gap-2">
-                      <HeartPulse className="w-4 h-4 text-[#2f8cff]" />
+                      <Shield className="w-4 h-4 text-[#2f8cff]" />
                       No.1 Safe Disposal Network
                     </span>
                   </div>
@@ -287,9 +201,14 @@ const Index = () => {
       <section className="section-padding-sm">
         <div className="container-tight">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {quickStats.map((stat, i) => (
+            {[
+              { label: "Antibiotics wasted yearly", value: "73B+", icon: Pill },
+              { label: "Drug-resistant deaths/yr", value: "1.27M", icon: AlertTriangle },
+              { label: "Disposal points mapped", value: "2,400+", icon: MapPin },
+              { label: "Active community members", value: "18K+", icon: Users },
+            ].map((stat, i) => (
               <ScrollReveal key={stat.label} delay={i * 0.08}>
-                <div className="glass-card p-5 sm:p-6 text-center hover:-translate-y-0.5 transition-transform duration-300">
+                <div className="glass-card p-5 sm:p-6 text-center">
                   <stat.icon className="w-5 h-5 text-primary mx-auto mb-3" />
                   <div className="font-display text-2xl sm:text-3xl font-bold glow-text mb-1">{stat.value}</div>
                   <div className="text-muted-foreground text-xs sm:text-sm">{stat.label}</div>
@@ -300,37 +219,24 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Story Strip */}
+      {/* What is AMR */}
       <section className="section-padding">
         <div className="container-tight">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-                From Home Cabinet to <span className="glow-text">Global Risk</span>
+              <h2 className="font-display text-2xl sm:text-3xl font-bold mb-4">
+                What is <span className="glow-text">Antimicrobial Resistance?</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Improper medicine disposal is not a small mistake. It compounds into resistant infections that affect
-                surgeries, maternal health, and everyday treatments.
+                When antibiotics are improperly discarded, they enter water supplies and soil, accelerating the evolution of drug-resistant superbugs that threaten modern medicine.
               </p>
             </div>
           </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              {
-                icon: BellRing,
-                title: "Leftovers Build Up",
-                desc: "Partially used antibiotic packs sit in homes and often end up in regular trash or sinks.",
-              },
-              {
-                icon: Beaker,
-                title: "Environment Gets Exposed",
-                desc: "Trace antibiotics in landfills and waterways accelerate bacterial adaptation over time.",
-              },
-              {
-                icon: Target,
-                title: "Intervene Early",
-                desc: "Safe collection closes this loop and helps keep treatment options effective for everyone.",
-              },
+              { icon: Pill, title: "Unused Antibiotics", desc: "Millions of antibiotic doses go unused every year, creating a ticking time bomb if not disposed of properly." },
+              { icon: AlertTriangle, title: "Superbugs Emerge", desc: "Antibiotics in landfills and waterways help bacteria develop resistance, making infections harder to treat." },
+              { icon: Recycle, title: "Safe Disposal Helps", desc: "Proper disposal prevents environmental contamination and slows the spread of antimicrobial resistance." },
             ].map((card, i) => (
               <ScrollReveal key={card.title} delay={i * 0.1}>
                 <div className="glass-card p-6 sm:p-8 h-full group hover:border-primary/30 transition-colors duration-300">
@@ -346,92 +252,32 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Impact Loop */}
+      {/* How it Works */}
       <section className="section-padding-sm">
         <div className="container-tight">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3">
-                The <span className="glow-text">Impact Loop</span>
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                A simple four-step cycle that makes participation frictionless and impact measurable.
-              </p>
-            </div>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-center mb-12">
+              How <span className="glow-text">MediSafe</span> Works
+            </h2>
           </ScrollReveal>
-          <div className="relative">
-            <div className="hidden lg:block absolute top-12 left-10 right-10 h-px bg-gradient-to-r from-primary/15 via-primary/40 to-primary/15" />
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {impactSteps.map((item, i) => (
-              <ScrollReveal key={item.id} delay={i * 0.1}>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { step: "01", title: "Find a Point", desc: "Use our map to find the nearest safe disposal location.", icon: MapPin },
+              { step: "02", title: "Dispose Safely", desc: "Drop off your unused or expired antibiotics.", icon: Recycle },
+              { step: "03", title: "Upload Proof", desc: "Take a photo and upload your disposal proof.", icon: Shield },
+              { step: "04", title: "Earn Rewards", desc: "Get points, badges, and climb the leaderboard.", icon: Award },
+            ].map((item, i) => (
+              <ScrollReveal key={item.step} delay={i * 0.1}>
                 <div className="glass-card p-6 relative overflow-hidden group hover:border-primary/30 transition-colors duration-300">
                   <span className="absolute -top-2 -right-2 font-display text-6xl font-bold text-primary/5 group-hover:text-primary/10 transition-colors select-none">
-                    {item.id}
+                    {item.step}
                   </span>
                   <item.icon className="w-5 h-5 text-primary mb-4" />
                   <h3 className="font-display font-semibold mb-1.5">{item.title}</h3>
                   <p className="text-muted-foreground text-sm">{item.desc}</p>
                 </div>
               </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience */}
-      <section className="section-padding">
-        <div className="container-tight">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-stretch">
-            <ScrollReveal direction="left">
-              <div className="glass-card p-6 sm:p-8 h-full relative overflow-hidden">
-                <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-primary/10 blur-3xl" />
-                <p className="text-xs uppercase tracking-[0.14em] text-primary font-semibold mb-3">Mission Control</p>
-                <h3 className="font-display text-2xl sm:text-3xl font-bold mb-3">Designed to Feel Like a Public Health Product</h3>
-                <p className="text-muted-foreground mb-6 max-w-xl">
-                  MediSafe blends clarity, urgency, and momentum. The experience is intentionally crafted so citizens can
-                  act in under 60 seconds while understanding why each action matters.
-                </p>
-                <div className="grid sm:grid-cols-3 gap-3">
-                  {[
-                    { label: "Average disposal flow", value: "58 sec" },
-                    { label: "Photo verification confidence", value: "96%" },
-                    { label: "Weekly challenge participation", value: "72%" },
-                  ].map((item) => (
-                    <div key={item.label} className="rounded-xl border border-border/60 bg-background/70 p-3">
-                      <p className="text-lg font-display font-bold text-foreground">{item.value}</p>
-                      <p className="text-xs text-muted-foreground">{item.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal direction="right" delay={0.1}>
-              <div className="glass-card p-6 sm:p-8 h-full">
-                <h3 className="font-display text-xl font-bold mb-4">Live Community Signals</h3>
-                <div className="space-y-3">
-                  {[
-                    "132 safe disposals completed today",
-                    "14 schools joined this month",
-                    "3 new municipal collection partners onboarded",
-                    "Top neighborhood reduced improper disposal by 28%",
-                  ].map((entry, i) => (
-                    <motion.div
-                      key={entry}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.7 }}
-                      transition={{ duration: 0.45, delay: 0.06 * i }}
-                      className="flex items-start gap-3 p-3 rounded-xl bg-background/70 border border-border/60"
-                    >
-                      <span className="mt-1.5 w-2 h-2 rounded-full bg-primary shrink-0 animate-pulse" />
-                      <span className="text-sm text-foreground/90">{entry}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
@@ -441,31 +287,21 @@ const Index = () => {
         <div className="container-tight">
           <ScrollReveal>
             <div className="glass-card glow-border p-8 sm:p-12 text-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-accent/35 pointer-events-none" />
-              <div className="absolute inset-0 pointer-events-none aurora-band" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 pointer-events-none" />
               <div className="relative">
                 <h2 className="font-display text-2xl sm:text-3xl font-bold mb-4">
-                  Ready to make your city safer?
+                  Ready to make a difference?
                 </h2>
                 <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-                  Join a movement where disposal is measurable, rewarding, and built for real public health outcomes.
+                  Join thousands of responsible citizens fighting antimicrobial resistance through safe antibiotic disposal.
                 </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                  <Link
-                    to="/map"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-200 active:scale-[0.97]"
-                  >
-                    <MapPin className="w-4 h-4" />
-                    Start Disposing Safely
-                  </Link>
-                  <Link
-                    to="/game"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-background/70 border border-border/70 font-semibold text-sm hover:bg-background transition-all duration-200"
-                  >
-                    Join Weekly Challenge
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
+                <Link
+                  to="/map"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-200 active:scale-[0.97]"
+                >
+                  <MapPin className="w-4 h-4" />
+                  Start Disposing Safely
+                </Link>
               </div>
             </div>
           </ScrollReveal>
@@ -476,7 +312,7 @@ const Index = () => {
       <footer className="border-t border-border/50 py-8">
         <div className="container-tight px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <span className="font-display font-semibold text-foreground">MediSafe</span>
-          <span>© 2026 MediSafe. Building healthier communities together.</span>
+          <span>© 2026 MediSafe. Fighting AMR together.</span>
         </div>
       </footer>
     </div>
