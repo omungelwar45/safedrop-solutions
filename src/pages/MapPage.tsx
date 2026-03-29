@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ScrollReveal } from "../components/ScrollReveal";
 import { Search, Navigation, Filter, Phone, Clock, Star, Locate, X, Truck, Activity } from "lucide-react";
@@ -13,7 +13,7 @@ type DisposalLocation = {
   id: number;
   name: string;
   type: LocationType;
-  state: "Karnataka" | "Maharashtra";
+  state: "Maharashtra";
   address: string;
   distance: string;
   rating: number;
@@ -23,18 +23,16 @@ type DisposalLocation = {
 };
 
 const LOCATIONS: DisposalLocation[] = [
-  { id: 1, name: "Apollo Pharmacy", type: "pharmacy", state: "Karnataka", address: "MG Road, Bengaluru", distance: "0.8 km", rating: 4.5, open: true, lat: 12.97, lng: 77.59 },
-  { id: 2, name: "City Hospital Collection", type: "hospital", state: "Karnataka", address: "Koramangala, Bengaluru", distance: "1.2 km", rating: 4.8, open: true, lat: 12.93, lng: 77.62 },
-  { id: 3, name: "Green Disposal Center", type: "collection", state: "Karnataka", address: "Indiranagar, Bengaluru", distance: "2.1 km", rating: 4.3, open: false, lat: 12.97, lng: 77.64 },
-  { id: 4, name: "MedPlus Pharmacy", type: "pharmacy", state: "Karnataka", address: "HSR Layout, Bengaluru", distance: "2.8 km", rating: 4.1, open: true, lat: 12.91, lng: 77.64 },
-  { id: 5, name: "Safe Med Collect", type: "collection", state: "Karnataka", address: "Whitefield, Bengaluru", distance: "5.4 km", rating: 4.6, open: true, lat: 12.97, lng: 77.75 },
-  { id: 6, name: "Mumbai Civic Med Return", type: "collection", state: "Maharashtra", address: "Andheri East, Mumbai", distance: "1.0 km", rating: 4.7, open: true, lat: 19.115, lng: 72.869 },
-  { id: 7, name: "Pune Care Hospital Drop", type: "hospital", state: "Maharashtra", address: "Shivajinagar, Pune", distance: "1.6 km", rating: 4.6, open: true, lat: 18.531, lng: 73.847 },
-  { id: 8, name: "Nagpur Safe Pharmacy", type: "pharmacy", state: "Maharashtra", address: "Dharampeth, Nagpur", distance: "2.2 km", rating: 4.3, open: true, lat: 21.145, lng: 79.083 },
-  { id: 9, name: "Nashik AMR Collection Hub", type: "collection", state: "Maharashtra", address: "College Road, Nashik", distance: "3.1 km", rating: 4.4, open: false, lat: 19.997, lng: 73.789 },
+  { id: 1, name: "Mumbai Civic Med Return", type: "collection", state: "Maharashtra", address: "Andheri East, Mumbai", distance: "1.0 km", rating: 4.7, open: true, lat: 19.115, lng: 72.869 },
+  { id: 2, name: "Pune Care Hospital Drop", type: "hospital", state: "Maharashtra", address: "Shivajinagar, Pune", distance: "1.6 km", rating: 4.6, open: true, lat: 18.531, lng: 73.847 },
+  { id: 3, name: "Nagpur Safe Pharmacy", type: "pharmacy", state: "Maharashtra", address: "Dharampeth, Nagpur", distance: "2.2 km", rating: 4.3, open: true, lat: 21.145, lng: 79.083 },
+  { id: 4, name: "Nashik AMR Collection Hub", type: "collection", state: "Maharashtra", address: "College Road, Nashik", distance: "3.1 km", rating: 4.4, open: false, lat: 19.997, lng: 73.789 },
+  { id: 5, name: "Aurangabad Green Disposal Point", type: "collection", state: "Maharashtra", address: "Cidco, Chhatrapati Sambhajinagar", distance: "2.4 km", rating: 4.2, open: true, lat: 19.876, lng: 75.343 },
+  { id: 6, name: "Thane MedPlus Safe Drop", type: "pharmacy", state: "Maharashtra", address: "Naupada, Thane", distance: "1.3 km", rating: 4.5, open: true, lat: 19.218, lng: 72.978 },
+  { id: 7, name: "Kolhapur District Hospital Return", type: "hospital", state: "Maharashtra", address: "Tarabai Park, Kolhapur", distance: "2.8 km", rating: 4.1, open: true, lat: 16.695, lng: 74.231 },
 ];
 
-const USER_LOCATION: LatLngExpression = [12.955, 77.63];
+const USER_LOCATION: LatLngExpression = [19.076, 72.8777];
 
 const typeColors: Record<LocationType, string> = {
   pharmacy: "bg-primary/10 text-primary",
@@ -69,12 +67,12 @@ const neighborhoodRisk = [
 const FitToFilteredLocations = ({ filtered }: { filtered: DisposalLocation[] }) => {
   const map = useMap();
 
-  useMemo(() => {
+  useEffect(() => {
     if (filtered.length === 0) {
       return;
     }
     const bounds = latLngBounds(filtered.map((loc) => [loc.lat, loc.lng] as [number, number]));
-    map.fitBounds(bounds, { padding: [50, 50] });
+    map.flyToBounds(bounds, { padding: [50, 50], duration: 1.1, easeLinearity: 0.25 });
   }, [filtered, map]);
 
   return null;
@@ -83,11 +81,11 @@ const FitToFilteredLocations = ({ filtered }: { filtered: DisposalLocation[] }) 
 const FocusSelectedLocation = ({ selected }: { selected: DisposalLocation | null }) => {
   const map = useMap();
 
-  useMemo(() => {
+  useEffect(() => {
     if (!selected) {
       return;
     }
-    map.flyTo([selected.lat, selected.lng], Math.max(map.getZoom(), 13), { duration: 0.8 });
+    map.flyTo([selected.lat, selected.lng], Math.max(map.getZoom(), 13), { duration: 1.1, easeLinearity: 0.25 });
   }, [map, selected]);
 
   return null;
@@ -177,7 +175,7 @@ const MapPage = () => {
                 <Filter className="w-4 h-4" />
                 Open Now
               </button>
-              {(["all", "Maharashtra", "Karnataka"] as const).map((state) => (
+              {(["all", "Maharashtra"] as const).map((state) => (
                 <button
                   key={state}
                   onClick={() => setFilterState(state)}
@@ -249,7 +247,20 @@ const MapPage = () => {
         </div>
 
         <div className="flex-1 relative min-h-[300px]">
-          <MapContainer center={USER_LOCATION} zoom={12} className="absolute inset-0 z-0" zoomControl={true}>
+          <MapContainer
+            center={USER_LOCATION}
+            zoom={7}
+            className="absolute inset-0 z-0"
+            zoomControl={true}
+            preferCanvas={true}
+            zoomAnimation={true}
+            fadeAnimation={true}
+            markerZoomAnimation={true}
+            zoomSnap={0.25}
+            zoomDelta={0.5}
+            wheelPxPerZoomLevel={80}
+            scrollWheelZoom="center"
+          >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
